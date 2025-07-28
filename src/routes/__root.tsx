@@ -4,11 +4,6 @@ import {
   Scripts,
   createRootRouteWithContext,
 } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-
-import Header from '../components/Header'
-
-import TanStackQueryLayout from '../integrations/tanstack-query/layout.tsx'
 
 import appCss from '../styles.css?url'
 
@@ -29,7 +24,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Practical React Query',
       },
     ],
     links: [
@@ -39,15 +34,11 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
-
-  component: () => (
+  errorComponent: () => <div>Error</div>,
+  notFoundComponent: () => <div>Not Found</div>,
+  component: () => (  
     <RootDocument>
-      <Header />
-
       <Outlet />
-      <TanStackRouterDevtools />
-
-      <TanStackQueryLayout />
     </RootDocument>
   ),
 })
@@ -58,7 +49,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className='flex min-h-svh flex-col'>
         {children}
         <Scripts />
       </body>
