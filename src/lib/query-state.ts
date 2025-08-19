@@ -3,37 +3,37 @@ type BaseQueryState = {
 };
 
 type IdleQueryState<DataType> = BaseQueryState & {
-  state: "idle";
+  status: "idle";
   data: DataType | null; //data can be null or previous data
   error: null;
 };
 
 type LoadingQueryState<DataType> = BaseQueryState & {
-  state: "loading";
+  status: "loading";
   data: undefined;
   error: null;
 };
 //Data is in the cache
 type FetchingQueryState<DataType> = BaseQueryState & {
-  state: "fetching";
+  status: "fetching";
   data: DataType;
   error: null;
 };
 
 type SuccessQueryState<DataType> = BaseQueryState & {
-  state: "success";
+  status: "success";
   data: DataType;
   error: null;
 };
 
 type ErrorQueryState<DataType> = BaseQueryState & {
-  state: "error";
-  data: undefined;
+  status: "error";
+  data: DataType | null;
   error: Error;
 };
 
 type FirstSuccessQueryState<DataType> = BaseQueryState & {
-  state: "first-success";
+  status: "first-success";
   data: DataType;
   error: null;
 };
