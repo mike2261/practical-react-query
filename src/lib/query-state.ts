@@ -38,7 +38,7 @@ type FirstSuccessQueryState<DataType> = BaseQueryState & {
   error: null;
 };
 
-type QueryState<DataType> =
+export type QueryState<DataType> =
   | IdleQueryState<DataType>
   | LoadingQueryState<DataType>
   | FetchingQueryState<DataType>
